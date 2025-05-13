@@ -57,13 +57,27 @@
   <div class="start-menu" id="startMenu"><ul><li onclick="openWindow('readme')">About</li><li onclick="openWindow('roots')">My Roots</li><li onclick="alert('Shutting down...')">Shutdown</li></ul></div>
 
   <!-- WINDOWS -->
-  <div class="window" id="roots"><div class="window-header" onmousedown="drag(event,this.parentElement)">My Roots<span class="close-btn" onclick="closeWindow('roots')">X</span></div><div class="window-content"><p>I was born in Kandy, Sri Lanka. Warmth, family, spice, temple bells.</p></div></div>
+  <div class="window" id="roots"><div class="window-header" onmousedown="drag(event,this.parentElement)">My Roots<span class="close-btn" onclick="closeWindow('roots')">X</span></div><div class="window-content"><p>I was born in <strong>Kandy</strong>, where mornings begin with the smell of cardamom tea and
+the chant of monks drifting from the hills. My grandparents’ veranda overlooked a mosaic of tiled roofs,
+and every Poya day we’d walk to the lake, candles reflecting off the water like floating constellations.
+Even now, when I hear a distant drum, I’m eight years old again — barefoot, sticky with mango juice,
+certain the world was small and entirely ours.</p></div></div>
 
-  <div class="window" id="seattle"><div class="window-header" onmousedown="drag(event,this.parentElement)">Current Session<span class="close-btn" onclick="closeWindow('seattle')">X</span></div><div class="window-content"><p>Seattle during high school: rain, growth, new beginnings.</p></div></div>
+  <div class="window" id="seattle"><div class="window-header" onmousedown="drag(event,this.parentElement)">Current Session<span class="close-btn" onclick="closeWindow('seattle')">X</span></div><div class="window-content"><p>Seattle arrived as gray skies and endless possibilities. I learned that rain has
+a hundred textures: the whisper on pine needles at Discovery Park, the metallic hiss on Link Light Rail tracks,
+the sudden downpour that baptizes Pike Place in neon reflections. High school hallways smelled of wet backpacks
+and ambition. I discovered coding clubs, Pho broth, and how the word ‘home’ expands to fit new streets.</p></div></div>
 
-  <div class="window" id="future"><div class="window-header" onmousedown="drag(event,this.parentElement)">Future<span class="close-btn" onclick="closeWindow('future')">X</span></div><div class="window-content"><p>Dream: become a doctor blending science and compassion.</p></div></div>
+  <div class="window" id="future"><div class="window-header" onmousedown="drag(event,this.parentElement)">Future<span class="close-btn" onclick="closeWindow('future')">X</span></div><div class="window-content"><p>My future flashes between wards and research labs. I want to be the bridge between data and empathy —
+to decode genomes by day and reassure parents at night. Medicine, for me, is storytelling with
+cells: every mutation a plot twist, every recovery a resolution. One day I hope to return to communities
+like the ones that raised me, carrying microscopes in one hand and fluent compassion in the other.</p></div></div>
 
-  <div class="window" id="hobbies"><div class="window-header" onmousedown="drag(event,this.parentElement)">Hobbies<span class="close-btn" onclick="closeWindow('hobbies')">X</span></div><div class="window-content"><ul><li>Hiking</li><li>Reading</li><li>Gaming</li></ul></div></div>
+  <div class="window" id="hobbies"><div class="window-header" onmousedown="drag(event,this.parentElement)">Hobbies<span class="close-btn" onclick="closeWindow('hobbies')">X</span></div><div class="window-content"><ul>
+<li><strong>Hiking:</strong> Where I test my legs and quiet my brain.</li>
+<li><strong>Reading:</strong> My portal to histories I never lived and futures I might build.</li>
+<li><strong>Gaming:</strong> Interactive philosophy disguised as fun.</li>
+</ul></div></div>
 
   <div class="window" id="gallery"><div class="window-header" onmousedown="drag(event,this.parentElement)">Gallery<span class="close-btn" onclick="closeWindow('gallery')">X</span></div><div class="window-content">
     <img class="content-img" src="kandy.jpg"><img class="content-img" src="seattle.jpg"><img class="content-img" src="fishing.jpg"><img class="content-img" src="elephants.webp"><img class="content-img" src="mountains.avif"><img class="content-img" src="map.webp">
@@ -73,15 +87,51 @@
 
   <!-- Sri Lanka detailed windows omitted for brevity; you can copy from previous versions -->
 
-  <div class="window" id="beach"><div class="window-header" onmousedown="drag(event,this.parentElement)">The Beach<span class="close-btn" onclick="closeWindow('beach')">X</span></div><div class="window-content"><p>Beach memory...</p></div></div>
+  <div class="window" id="beach"><div class="window-header" onmousedown="drag(event,this.parentElement)">The Beach<span class="close-btn" onclick="closeWindow('beach')">X</span></div><div class="window-content"><p>The beach in Sri Lanka wasn’t just sand and sea; it was the
+salt‑sweet smell of the Indian Ocean, the crackle of vendors frying isso wade, and the feel of hot sand
+between my toes as cousins dared each other to race the tide. Every sunset painted the sky mango‑orange,
+and we’d count fishing boats as their lamps blinked on. In that liminal hour, the horizon felt like a thin
+veil between home and everywhere else I might go.</p></div></div>
 
-  <div class="window" id="hiking"><div class="window-header" onmousedown="drag(event,this.parentElement)">Hiking<span class="close-btn" onclick="closeWindow('hiking')">X</span></div><div class="window-content"><p>Hiking memory...</p></div></div>
+  <div class="window" id="hiking"><div class="window-header" onmousedown="drag(event,this.parentElement)">Hiking<span class="close-btn" onclick="closeWindow('hiking')">X</span></div><div class="window-content"><p>Northwest forests are my reset button. My favorite loop is Rattlesnake Ledge:
+evergreen spires, damp cedar logs, and switchbacks that burn the thighs just enough to quiet the mind.
+At the summit the lake stretches like polished obsidian, and the city skyline hides behind foothills —
+a reminder that wilderness and bustle can coexist, just like my two homes.</p></div></div>
 
-  <div class="window" id="games"><div class="window-header" onmousedown="drag(event,this.parentElement)">Games<span class="close-btn" onclick="closeWindow('games')">X</span></div><div class="window-content" style="max-height:300px;overflow-y:scroll"><h3>Games</h3><p>Witcher 3...</p></div></div>
+  <div class="window" id="games"><div class="window-header" onmousedown="drag(event,this.parentElement)">Games<span class="close-btn" onclick="closeWindow('games')">X</span></div><div class="window-content" style="max-height:300px;overflow-y:scroll"><h3>Games</h3><p><strong>The Witcher 3: Wild Hunt</strong><br>
+<img class="content-img" src="witcher3.png"><br>
+Geralt taught me that morality is rarely binary. The war‑torn villages,
+the folklore monsters, and the quiet act of choosing kindness in a cruel world
+mirrored my own struggle to define right and wrong after moving countries.</p></div>
+<br><div>
+<strong>Hades</strong><br>
+<img class="content-img" src="hades.png"><br>
+A roguelike that redefined failure as progress. Every escape attempt felt like
+another conversation with my own persistence, and Zagreus’s banter made the Underworld feel oddly like home.
+</div><br>
+<div>
+<strong>DOOM 3</strong><br>
+<img class="content-img" src="doom3.png"><br>
+Pure catharsis. Chainsaw revs and demon growls helped me unload exam stress faster than any mindfulness app.
+</div><br>
+<div>
+<strong>Forza Horizon 4</strong><br>
+<img class="content-img" src="forza.png"><br>
+Road trips were rare growing up; Forza let me cruise through digital heather fields, pretending every checkpoint was a new passport stamp.
+</div>
+</div>
 
-  <div class="window" id="reading"><div class="window-header" onmousedown="drag(event,this.parentElement)">Reading<span class="close-btn" onclick="closeWindow('reading')">X</span></div><div class="window-content"><p>Book quotes...</p></div></div>
+  <div class="window" id="reading"><div class="window-header" onmousedown="drag(event,this.parentElement)">Reading<span class="close-btn" onclick="closeWindow('reading')">X</span></div><div class="window-content"><p><h3>Born a Crime – Trevor Noah</h3>
+<blockquote>“We tell people to follow their dreams, but you can only dream of what you can imagine, and,
+depending on where you come from, your imagination can be quite limited.”</blockquote>
+<p>This line echoed my own journey: moving countries expanded the size of possible dreams.</p>
+<h3>Second Suns – David Oliver Relin</h3>
+<blockquote>“A single cataract surgery can transform not just one life but an entire family's fortunes.”</blockquote>
+<p>It taught me that science is only powerful when it is accessible.</p></p></div></div>
 
-  <div class="window" id="class"><div class="window-header" onmousedown="drag(event,this.parentElement)">AP Biology<span class="close-btn" onclick="closeWindow('class')">X</span></div><div class="window-content"><p>AP Bio inspiration...</p></div></div>
+  <div class="window" id="class"><div class="window-header" onmousedown="drag(event,this.parentElement)">AP Biology<span class="close-btn" onclick="closeWindow('class')">X</span></div><div class="window-content"><p><p>Our first lab was cheek‑cell DNA extraction.
+Seeing cloudy strands swirl inside a tube felt like witnessing a secret handshake between life and chemistry.
+From that day, research wasn’t abstract; it was personal.</p></p></div></div>
 
 </div>
 
