@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Where I Was Desktop</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'VT323', monospace;
+    }
+
+    #boot-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black url('https://upload.wikimedia.org/wikipedia/en/8/8c/Windows_XP_Logo.svg') no-repeat center;
+      background-size: 200px;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 24px;
+    }
+
+    .desktop {
+      background: url('xp_background.png') no-repeat center center fixed;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: none;
+    }
+
+    .taskbar {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: #0a246a;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 18px;
+      padding: 0 10px;
+      z-index: 10;
+    }
+
+    .start-logo {
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .start-menu {
+      display: none;
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      background: #e0e0e0;
+      width: 200px;
+      box-shadow: 0 0 10px #000;
+      z-index: 10;
+    }
+
+    .start-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .start-menu ul li {
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .start-menu ul li:hover {
+      background-color: #c0c0c0;
+    }
+
+    .icon {
+      width: 80px;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    .icon img {
+      width: 48px;
+      height: 48px;
+      display: block;
+      margin: 0 auto 5px auto;
+    }
+
+    .window {
+      position: absolute;
+      width: 400px;
+      background: url('https://www.transparenttextures.com/patterns/pw-maze-white.png') repeat #d8eaff;
+      border: 2px solid #333;
+      display: none;
+      font-size: 16px;
+      z-index: 100;
+    }
+
+    .window-header {
+      background-color: #0a246a;
+      color: white;
+      padding: 8px;
+      font-weight: bold;
+      cursor: move;
+    }
+
+    .window-content {
+      padding: 15px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      background: red;
+      padding: 2px 8px;
+      font-size: 16px;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    img.content-img {
+      width: 100%;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    ul {
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div id="boot-screen">Loading Windows XP...</div>
+  <audio id="startup-sound" src="https://www.myinstants.com/media/sounds/windows-xp-startup.mp3"></audio>
+
+  <div class="desktop" id="desktop">
+    <!-- Default icons -->
+    <div class="icon" style="top: 50px; left: 50px;" onclick="openWindow('roots')">
+      <img src="https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Places-folder-blue-icon.png">
+      My Roots
+    </div>
+    <div class="icon" style="top: 50px; left: 150px;" onclick="openWindow('seattle')">
+      <img src="https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Places-folder-documents-icon.png">
+      Current Session
+    </div>
+    <div class="icon" style="top: 50px; left: 250px;" onclick="openWindow('future')">
+      <img src="https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Places-folder-red-icon.png">
+      Future
+    </div>
+    <div class="icon" style="top: 50px; left: 350px;" onclick="openWindow('hobbies')">
+      <img src="https://icons.iconarchive.com/icons/dtafalonso/windows-8-metro/256/Games-icon.png">
+      Hobbies
+    </div>
+    <div class="icon" style="top: 50px; left: 450px;" onclick="openWindow('gallery')">
+      <img src="https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Apps-gwenview-icon.png">
+      Gallery
+    </div>
+    <div class="icon" style="top: 50px; left: 550px;" onclick="openWindow('readme')">
+      <img src="https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Actions-help-about-icon.png">
+      README.txt
+    </div>
+
+    <!-- New Sri Lankan places -->
+    <div class="icon" style="top: 180px; left: 50px;" onclick="openWindow('sigiriya')">
+      <img src="https://icons.iconarchive.com/icons/google/noto-emoji-travel-places/256/42492-rock-icon.png">
+      Sigiriya
+    </div>
+    <div class="icon" style="top: 180px; left: 150px;" onclick="openWindow('ella')">
+      <img src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/256/62983-railway-car-icon.png">
+      Ella
+    </div>
+    <div class="icon" style="top: 180px; left: 250px;" onclick="openWindow('galle')">
+      <img src="https://icons.iconarchive.com/icons/google/noto-emoji-travel-places/256/42636-beach-with-umbrella-icon.png">
+      Galle Fort
+    </div>
+    <div class="icon" style="top: 180px; left: 350px;" onclick="openWindow('temple')">
+      <img src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/256/62858-place-of-worship-icon.png">
+      Temple of the Tooth
+    </div>
+    <div class="icon" style="top: 180px; left: 450px;" onclick="openWindow('jaffna')">
+      <img src="https://icons.iconarchive.com/icons/google/noto-emoji-travel-places/256/42608-cityscape-icon.png">
+      Jaffna
+    </div>
+
+    
+<div class="icon" style="top: 300px; left: 50px;" onclick="openWindow('spaceblaster')">
+  <img src="https://icons.iconarchive.com/icons/iconarchive/space/256/Space-invaders-icon.png">
+  <div>Space Blaster</div>
+</div>
+
+<div class="icon" style="top: 300px; left: 150px;" onclick="openWindow('islandracer')">
+  <img src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/256/62982-racing-car-icon.png">
+  <div>Island Racer</div>
+</div>
+
+<div class="icon" style="top: 300px; left: 250px;" onclick="openWindow('tetris')">
+  <img src="https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Apps-game-console-icon.png">
+  <div>Tetris Deluxe</div>
+</div>
+
+<div class="icon" style="top: 400px; left: 50px;" onclick="openWindow('beach')">
+  <img src="icon_beach.png">
+  <div>The Beach</div>
+</div>
+
+<div class="icon" style="top: 400px; left: 150px;" onclick="openWindow('hiking')">
+  <img src="icon_hiking.png">
+  <div>Hiking – Seattle</div>
+</div>
+<!-- Taskbar -->
+    <div class="taskbar" onclick="toggleStartMenu()">
+      <img class="start-logo" src="windows_logo.png" alt="Start"> Start
+    </div>
+
+    <!-- Start menu -->
+    <div class="start-menu" id="startMenu">
+      <ul>
+        <li onclick="openWindow('readme')">About</li>
+        <li onclick="openWindow('roots')">My Roots</li>
+        <li onclick="alert('Shutting down...')">Shutdown</li>
+      </ul>
+    </div>
+
+    
+<!-- Full Windows with Content -->
+
+<div class="window" id="roots">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">My Roots <span class="close-btn" onclick="closeWindow('roots')">X</span></div>
+  <div class="window-content">
+    <p>I was born in Kandy, Sri Lanka. It's a place of warmth, family, and tradition. The air smells of sunshine and spice, and the sound of temple bells fills the streets.</p>
+    <audio controls>
+      <source src="https://cdn.pixabay.com/download/audio/2022/11/16/audio_3b3fc1c0a6.mp3" type="audio/mpeg">
+    </audio>
+    <p><em>“Somewhere warm still calls my name — in a language I only dream in.”</em></p>
+  </div>
+</div>
+
+<div class="window" id="seattle">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Current Session <span class="close-btn" onclick="closeWindow('seattle')">X</span></div>
+  <div class="window-content">
+    <p>I moved to Seattle during high school. It's a place of rain, growth, and new beginnings. The scent after a storm and the sound of raindrops tapping on windows always reminds me where I am now.</p>
+    <audio controls>
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/01/audio_45ec83701c.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
+
+<div class="window" id="future">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Future <span class="close-btn" onclick="closeWindow('future')">X</span></div>
+  <div class="window-content">
+    <p>I want to become a doctor — to help others, to connect deeply with people’s lives and health, and to give back to the communities that shaped me.</p>
+  </div>
+</div>
+
+<div class="window" id="hobbies">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Hobbies <span class="close-btn" onclick="closeWindow('hobbies')">X</span></div>
+  <div class="window-content">
+    <ul>
+      <li>🏞️ Hiking – I enjoy the quiet, the challenge, and the views from the top.</li>
+      <li>📚 Reading – From deep nonfiction to far-off futures in science fiction.</li>
+      <li>🎮 Gaming – Strategy, immersion, and bonding with friends.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="window" id="gallery">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Gallery <span class="close-btn" onclick="closeWindow('gallery')">X</span></div>
+  <div class="window-content">
+    <img class="content-img" src="kandy.jpg" alt="Kandy">
+    <img class="content-img" src="seattle.jpg" alt="Seattle">
+  </div>
+</div>
+
+<div class="window" id="readme">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">README.txt <span class="close-btn" onclick="closeWindow('readme')">X</span></div>
+  <div class="window-content">
+    <h3>📝 Welcome to "Where I Was" - XP Edition</h3>
+    <p>This is an interactive art project inspired by my personal journey, styled like an old Windows XP desktop. Here’s how to explore:</p>
+    <ul>
+      <li>Click icons on the desktop to open memory windows.</li>
+      <li>Drag windows around by their title bars.</li>
+      <li>Use the "Start" menu to access quick shortcuts.</li>
+      <li>Audio will auto-play when available — make sure sound is on!</li>
+    </ul>
+    <p>Explore stories from Sri Lanka and Seattle, learn about my dreams and hobbies, and visit special places across Sri Lanka by clicking their icons.</p>
+  </div>
+</div>
+
+<div class="window" id="sigiriya">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Sigiriya <span class="close-btn" onclick="closeWindow('sigiriya')">X</span></div>
+  <div class="window-content">
+    <p>Sigiriya, the Lion Rock Fortress, is a UNESCO World Heritage site. It was once a royal palace and fortress built atop a giant rock in the 5th century.</p>
+    <p><a href="https://goo.gl/maps/rvFNE2hNdFLLcEbH6" target="_blank">🌍 View on Google Maps</a></p>
+  </div>
+</div>
+
+<div class="window" id="ella">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Ella <span class="close-btn" onclick="closeWindow('ella')">X</span></div>
+  <div class="window-content">
+    <p>Ella is a beautiful hill town famous for tea plantations, waterfalls, and scenic train rides.</p>
+    <p><a href="https://goo.gl/maps/gsp5RChgHc6FrM8k7" target="_blank">🌍 View on Google Maps</a></p>
+  </div>
+</div>
+
+<div class="window" id="galle">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Galle Fort <span class="close-btn" onclick="closeWindow('galle')">X</span></div>
+  <div class="window-content">
+    <p>Galle Fort is a coastal fortress with Dutch-colonial architecture. It’s known for its lighthouse, cafes, and historic charm.</p>
+    <p><a href="https://goo.gl/maps/6XBv3zLZzJvWmUAg8" target="_blank">🌍 View on Google Maps</a></p>
+  </div>
+</div>
+
+<div class="window" id="temple">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Temple of the Tooth <span class="close-btn" onclick="closeWindow('temple')">X</span></div>
+  <div class="window-content">
+    <p>The Temple of the Tooth (Sri Dalada Maligawa) in Kandy houses a sacred relic — the tooth of the Buddha. It’s a deeply spiritual and symbolic place in Sri Lankan culture.</p>
+    <p><a href="https://goo.gl/maps/Q3tkPS9GbkC2" target="_blank">🌍 View on Google Maps</a></p>
+  </div>
+</div>
+
+<div class="window" id="jaffna">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Jaffna <span class="close-btn" onclick="closeWindow('jaffna')">X</span></div>
+  <div class="window-content">
+    <p>Jaffna, located in northern Sri Lanka, is a region with rich Tamil heritage, temples, and a vibrant culture distinct from the south.</p>
+    <p><a href="https://goo.gl/maps/D1yGwGgvyeV1qAGo6" target="_blank">🌍 View on Google Maps</a></p>
+  </div>
+</div>
+
+    <div class="window" id="roots"><div class="window-header">My Roots <span class="close-btn" onclick="closeWindow('roots')">X</span></div><div class="window-content">...</div></div>
+    <div class="window" id="seattle"><div class="window-header">Current Session <span class="close-btn" onclick="closeWindow('seattle')">X</span></div><div class="window-content">...</div></div>
+    <div class="window" id="future"><div class="window-header">Future <span class="close-btn" onclick="closeWindow('future')">X</span></div><div class="window-content">...</div></div>
+    <div class="window" id="hobbies"><div class="window-header">Hobbies <span class="close-btn" onclick="closeWindow('hobbies')">X</span></div><div class="window-content">...</div></div>
+    <div class="window" id="gallery"><div class="window-header">Gallery <span class="close-btn" onclick="closeWindow('gallery')">X</span></div><div class="window-content">...</div></div>
+    <div class="window" id="readme"><div class="window-header">README.txt <span class="close-btn" onclick="closeWindow('readme')">X</span></div><div class="window-content">...</div></div>
+
+    <!-- New location windows will be added in next step -->
+  </div>
+
+  <script>
+    function openWindow(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function closeWindow(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function toggleStartMenu() {
+      const menu = document.getElementById('startMenu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    window.onload = () => {
+      const sound = document.getElementById('startup-sound');
+      setTimeout(() => {
+        document.getElementById('boot-screen').style.display = 'none';
+        document.getElementById('desktop').style.display = 'block';
+        sound.play();
+      }, 3000);
+    };
+  
+function drag(e, target) {
+  e.preventDefault();
+  let offsetX = e.clientX - target.offsetLeft;
+  let offsetY = e.clientY - target.offsetTop;
+
+  function moveHandler(e) {
+    target.style.left = (e.clientX - offsetX) + 'px';
+    target.style.top = (e.clientY - offsetY) + 'px';
+  }
+
+  function upHandler() {
+    document.removeEventListener('mousemove', moveHandler);
+    document.removeEventListener('mouseup', upHandler);
+  }
+
+  document.addEventListener('mousemove', moveHandler);
+  document.addEventListener('mouseup', upHandler);
+}
+</script>
+</body>
+</html>
+<div class="window" id="spaceblaster">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Space Blaster <span class="close-btn" onclick="closeWindow('spaceblaster')">X</span></div>
+  <div class="window-content">
+    <p>🚀 Pew! Pew! You blasted 83 asteroids!</p>
+    <p><em>This game is under maintenance. Please insert floppy disk to continue.</em></p>
+  </div>
+</div>
+
+<div class="window" id="islandracer">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Island Racer <span class="close-btn" onclick="closeWindow('islandracer')">X</span></div>
+  <div class="window-content">
+    <p>🏎️ Welcome to Island Racer. Lap 1 complete.</p>
+    <p>Check back later for multiplayer mode.</p>
+  </div>
+</div>
+
+<div class="window" id="tetris">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Tetris Deluxe <span class="close-btn" onclick="closeWindow('tetris')">X</span></div>
+  <div class="window-content">
+    <p>🧩 Blocks are falling! Level: 12, Score: 9,820</p>
+    <p>Press <strong>[Start]</strong> to drop the L-block!</p>
+  </div>
+</div>
+
+<div class="window" id="beach">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">The Beach <span class="close-btn" onclick="closeWindow('beach')">X</span></div>
+  <div class="window-content">
+    <p>The beach in Sri Lanka wasn’t just sand and sea — it was warmth that wrapped around me like a familiar story. I remember chasing waves, eating fried snacks from vendors, and watching the sky turn pink as the sun dipped into the ocean.</p>
+    <p>It was the sound of laughter, of family, and of stillness. I didn’t need anything else. No noise from school, no pressure. Just the rhythmic comfort of water pulling at the shore like a lullaby I had heard since before I could understand it.</p>
+    <audio controls>
+      <source src="https://cdn.pixabay.com/download/audio/2021/11/16/audio_8c708726c4.mp3?filename=children-sea-waves-ambient-118419.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
+
+<div class="window" id="hiking">
+  <div class="window-header" onmousedown="drag(event, this.parentElement)">Hiking – Seattle <span class="close-btn" onclick="closeWindow('hiking')">X</span></div>
+  <div class="window-content">
+    <p>Hiking around Seattle always gives me that rare feeling of stillness and motion at once. I love trails like Rattlesnake Ledge and Discovery Park — tall evergreens, misty air, and the occasional call of a distant bird.</p>
+    <p>Being above the city with muddy shoes, tired legs, and a racing heart — that’s how I know I’m alive.</p>
+    <audio controls>
+      <source src="https://cdn.pixabay.com/download/audio/2023/03/31/audio_7c007926e6.mp3?filename=walking-in-nature-143746.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
+
